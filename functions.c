@@ -3,7 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <arpa/inet.h>
-#include "header.h"
+#include "functions.h"
 
 void pelates() {
     struct sockaddress_in server_address;
