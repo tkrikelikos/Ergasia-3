@@ -3,7 +3,7 @@
 #define PORT 6969
 
 typedef struct Proion {
-    char description[50];
+    char perigrafi[50];
     float timh;
     int proionta;
     int epityximena_aithmata;
