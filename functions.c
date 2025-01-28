@@ -42,7 +42,7 @@ void pelates() {
 
 void arxikopoihsh_katalogou(Proion *katalogos) {
     for (int i = 0; i < MAX_PROIONTA; i++) {
-        snprintf(katalogos[i].description, sizeof(katalogos[i].description), "Προιον %d", i + 1);
+        snprintf(katalogos[i].perigrafi, sizeof(katalogos[i].perigrafi), "Προιον %d", i + 1);
         katalogos[i].timh = (float)((rand() % 1000) / 10.0);
         katalogos[i].proionta =2;
         katalogos[i].epityximena_aithmata =0;
@@ -69,11 +69,11 @@ void xeirismos(int client_socket, Proion *katalogos, sinopsi *sinopsi) {
         Proion->proionta--;
         sinopsi->epityximenes_paraggelies++;
         sinopsi->tziros += Proion->timh;
-        snprintf(buffer, BUFFER_SIZE, "Επιτυχημενη αγορα: %s, $%.2f", Proion->description, Proion->timh);
+        snprintf(buffer, BUFFER_SIZE, "Επιτυχημενη αγορα: %s, $%.2f", Proion->perigrafi, Proion->timh);
     } else {
         sinopsi->apotixymenes_paraggelies++;
         Proion->apotyximena_aitimata++;
-        snprintf(buffer, BUFFER_SIZE, "Ελλειμα: %s", Proion->description);
+        snprintf(buffer, BUFFER_SIZE, "Ελλειμα: %s", Proion->perigrafi);
     }
     Proion->epityximena_aitimata++;
     write(client_socket, buffer, strlen(buffer) + 1);
@@ -83,7 +83,7 @@ void xeirismos(int client_socket, Proion *katalogos, sinopsi *sinopsi) {
 void anafora(Proion *katalogos, sinopsi sinopsi) {
     printf("\n---Αναφορα ---\n");
     for (int i = 0; i < MAX_PROIONTA; i++) {
-        printf("Προιον: %s, Sold: %d, Αιτημα: %d, Αποτυχημενο αιτημα:%d\n", katalogos[i].description, 2 - katalogos[i].proionta, katalogos[i].epityximena_aitimata, katalogos[i].apotyximena_aitimata);
+        printf("Προιον: %s, Sold: %d, Αιτημα: %d, Αποτυχημενο αιτημα:%d\n", katalogos[i].perigrafi, 2 - katalogos[i].proionta, katalogos[i].epityximena_aitimata, katalogos[i].apotyximena_aitimata);
     }
     printf("\nΣυνοψη:\n");
     printf("Συνολικες παραγγελιες: %d\n", sinopsi.synolikes_paraggelies);
